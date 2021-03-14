@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-class JokesCategories extends Component {
+class CategoryList extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       categories: [],
+      selectedCategory: null,
     };
   }
 
@@ -22,10 +23,6 @@ class JokesCategories extends Component {
       });
   }
 
-  handleClick = (event) => {
-    event.preventDefault()
-  }
-  
   render() {
     const { categories } = this.state;
     return (
@@ -34,7 +31,11 @@ class JokesCategories extends Component {
         <ul className="categories">
           {categories.length
             ? categories.map((category, index) => (
-                <li key={index} className="item" onClick={this.handleClick}>
+                <li
+                  key={index}
+                  className="item"
+                  onClick={() => this.handleSelectedCategories(category)}
+                >
                   {category}
                 </li>
               ))
@@ -45,4 +46,4 @@ class JokesCategories extends Component {
   }
 }
 
-export default JokesCategories;
+export default CategoryList;

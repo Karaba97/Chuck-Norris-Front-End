@@ -1,23 +1,24 @@
 import axios from 'axios'
 import React, { Component } from 'react'
-import JokesCategories from './components/JokesCategories';
 
 
-class RandomJokes extends Component {
+
+class Category extends Component {
+    const 
     constructor(props) {
         super(props)
     
         this.state = {
-             jokes: []
+             jokes: null
         }
     }
 
     componentDidMount() {
         axios
-        .get('https://api.chucknorris.io/jokes/random?category=dev')
+        .get(`https://api.chucknorris.io/jokes/random?category=${this.props.category}`)
         .then(response => {
             console.log(response)
-            // this.setState({jokes: response.data})
+            this.setState({jokes: response.data})
         })
         .catch(error => {
             console.log(error)
@@ -27,10 +28,10 @@ class RandomJokes extends Component {
     render() {
         return (
             <div>
-                <JokesCategories />
+                
             </div>
         )
     }
 }
 
-export default RandomJokes
+export default Category
