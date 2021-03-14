@@ -28,7 +28,7 @@ class Category extends Component {
     render() {
         return (
             <div>
-                
+              {this.jokes}  
             </div>
         )
     }
